@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          margin: 0;
+          background-color:black;
+        }
+
+        #notification {
+            display: none;
+            position: fixed;
+            top: 100px;
+            right: 620px;
+            padding: 20px;
+            width:250px;
+            height:70px;
+            background-color: #fefefe;
+            color: #000;
+            border-radius: 15px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            z-index: 999;
+        }
+      
+      .s{
+        border:3px solid white;
+        background-color:rgb(0, 0, 0);
+        color:white;
+        padding:3px;
+        /* border-radius:7px; */
+      }
+
+      input{
+        margin-right: 20px;
+        height: 20px;
+        width: 220px;
+      }
+
+      .c{
+        border: none;
+        background-color: transparent;
+        color: green;
+        font-size: medium;
+        font-weight: 500;
+      }
+      
+    </style>
+    <title>Fancy Notification</title>
+</head>
+<body>
+    <input type="text" id="notificationText">                    
+    <button class="s" onclick="showNotification()">Show Notification</button>
+    
+    <div id="notification">
+        <!-- Content will be dynamically inserted here -->
+        <button class="c" onclick="hideNotification()">Like</button>
+        <button class="c" onclick="hideNotification()">Reply</button>
+        <button class="c" onclick="hideNotification()">Mark as read</button>
+    </div>
+
+<script>
+    function showNotification() {
+        var notification = document.getElementById('notification');
+        var notificationText = document.getElementById('notificationText').value;
+        
+        // Set the input text as the content of the notification
+        document.getElementById('notification').innerHTML = '<p> <b>Love❤️:</b> ' + notificationText + '</p>' +
+                                                            '<button class="c" onclick="hideNotification()">Like</button>' +
+                                                            '<button class="c" onclick="hideNotification()">Reply</button>' +
+                                                            '<button class="c" onclick="hideNotification()">Mark as read</button>';
+
+        notification.style.display = 'block';
+
+        // You can add additional animations or effects here if needed.
+
+        // Automatically hide the notification after 3 seconds
+        setTimeout(function() {
+            hideNotification();
+        }, 30000);
+    }
+
+    function hideNotification() {
+        var notification = document.getElementById('notification');
+        notification.style.display = 'none';
+    }
+</script>
+
+</body>
+</html>
